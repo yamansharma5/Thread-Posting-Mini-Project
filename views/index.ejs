@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body>
+    <div class="w-full h-screen bg-zinc-800 p-10">
+        <form action="/register" method="POST">
+            <input class="px-3 py-2 rounded-md bg-transparent border-2" type="text" name="username" placeholder="Username">
+            <input class="px-3 py-2 rounded-md bg-transparent border-2" type="text" name="name" placeholder="Name">
+            <input class="px-3 py-2 rounded-md bg-transparent border-2" type="number" name="age" placeholder="Age">
+            <input class="px-3 py-2 rounded-md bg-transparent border-2" type="email" name="email" placeholder="Email">
+            <input class="px-3 py-2 rounded-md bg-transparent border-2" type="text" name="password" placeholder="Password">
+            <button class="px-3 py-2 bg-blue-500 rounded-md" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

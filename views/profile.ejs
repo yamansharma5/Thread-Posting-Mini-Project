@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="min-h-screen w-full text-white p-5 bg-zinc-800">
+    <div class="flex justify-end">
+        <a class="bg-red-500 rounded-md px-3 py-2 text-sm inline-block mb-5" href="/logout">Logout</a>
+
+    </div>
+    <div class="flex justify-between items-center mb-8">
+        <div class="flex items-center">
+            <img class="w-16 h-16 rounded-full mr-5 object-cover bg-gray-600" src="<%= user.profilePicture ? '/public/images/' + user.profilePicture : 'https://via.placeholder.com/64' %>" alt="Profile Picture">
+            <div>
+                <h1 class="text-2xl font-bold">Hello <%= user.username %></h1>
+                <p class="text-zinc-400"><%= user.email %></p>
+            </div>
+        </div>
+        <a class="bg-yellow-500 rounded-md px-3 py-2 text-sm inline-block text-black font-bold hover:bg-yellow-600" href="/profile/uploadimage">Change Picture</a>
+    </div>
+    
+    <h4 class="mb-5">You can create a new post</h4>
+    <form action="/post" method="POST">
+        <input class="px-3 py-2 border border-gray-300 rounded mb-2" type="text" name="title" placeholder="Title" required><br>
+        <input class="px-3 py-2 border border-gray-300 rounded mb-2" type="text" name="image" placeholder="Image URL"><br>
+        <textarea class="px-3 py-2 border border-gray-300 rounded resize-none mb-2" name="content" placeholder="Content" required></textarea><br><br>
+
+        <button class="px-3 py-2 bg-blue-500 text-white rounded" type="submit">Create Post</button>
+    </form>
+
+    <!-- // Display user's posts -->
+    <div class="mt-30">
+        <h3 class="text-zinc-400">Your Posts</h3>
+        <div class="postcontainer mt-5">
+            <% user.posts.forEach(element => {%>
+                <div class="mb-5 p-5 border border-gray-300 rounded">
+                    <h4 class="text-xl font-bold mb-2"><%= element.title %></h4>
+                    
+                    <p class="mb-5"><%= element.content %></p>
+                    <a class="bg-pink-600 px-3 py-2 rounded text-white" href="/like"> Like</a>
+                </div>
+            <% }) %>
+            
+        </div>
+    </div>
+    </div>
+</body>
+</html>
